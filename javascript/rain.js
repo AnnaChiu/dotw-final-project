@@ -6,9 +6,14 @@ var rainDirection = 0;
 var umbrella;
 var umbrellaMouse;
 
+var petal;
+var petalX, petalY;
+
 function preload(){
 	clouds = loadImage("images/huge-clouds.png");
 	umbrella = loadImage("images/yellow-umbrella.png");
+
+	petal = loadImage("images/petal.png");
 }
 
 function setup() {
@@ -30,6 +35,9 @@ function setup() {
 	}
 
 	umbrellaMouse = new Umbrella(windowWidth/2, windowHeight);
+
+	petalX = -20;
+	petalY = windowHeight/4;
 }
 
 function draw() {
@@ -46,11 +54,16 @@ function draw() {
 		collisionUmbrellaToRain(umbrellaMouse, rain[drops]);
 	}
 
+	// reset
 	translate();
 
 	// have umbrella move with mouse
 	umbrellaMouse.display(mouseX, mouseY);
 
+	// have a single petal blown into the scene
+	petalBlown();
+
+	// clouds
   	image(clouds,windowWidth/2,windowHeight/6,windowWidth,windowHeight/3);
 }
 
@@ -87,16 +100,11 @@ function Rain(x,y){
 	// rotate rain in direction according to mouse click
 	this.rotate = function(){
 		// move rain in a direction
-		if(rainDirection == 0){
-			// this.x += 0;
-		}
-		else if(rainDirection == -1){
-			// this.x += -1;
+		if(rainDirection == -1){
 			rotate(PI/15);
 			
 		}
 		else if(rainDirection == 1){
-			// this.x += 1;
 			rotate(-PI/15);	
 		}
 	}
@@ -140,6 +148,26 @@ function moveAway(umbrella, raindrop){
 	}
 }
 
+// have a petal fall into the scene according to the rain direction
+function petalBlown(){
+	if(petalY < windowHeight + 25){
+		if(rainDirection == 0){
+			petalY += 1;
+			petalX += 0.5;
+		}
+		else if(rainDirection == 1){
+			petalY += 1;
+			petalX += 1;
+		}
+		else{
+			petalY += 1;
+			petalX -= 1;
+		}
+	}
+
+	image(petal,petalX,petalY,75,75);
+}
+
 // use mouse clicks to determine direction of rain
 function mouseClicked(){
 	// click right side of screen
@@ -159,6 +187,7 @@ function mouseClicked(){
 	}
 }
 
+// resize canvas according to window
 function windowResized(){
 	resizeCanvas(windowWidth, windowHeight);
 } 

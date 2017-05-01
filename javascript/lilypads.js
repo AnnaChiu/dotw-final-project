@@ -42,7 +42,6 @@ function setup() {
   	for(var i = 0; i < 15; i++){
   		var randomX = random(0,windowWidth/2);
   		var randomY = random(0,windowHeight/2);
-  		console.log("start position", randomX, randomY)
   		lilypads.push(new Lilypad(randomX, randomY, 200, 200));
   	}
 
@@ -121,7 +120,6 @@ function WaterRipple(x, y, radiusGrowthRate){
 
 	this.grow = function(){
 		this.radius += radiusGrowthRate;
-		console.log(this.radius);
 	}
 }
 
@@ -144,19 +142,19 @@ function Lilypad(x,y){
 	    // random number from [0,10)
 	    var randomNum = random(0,10);
 	    
-	    // 70% chance regular lilypad
-	    if(randomNum < 4){
+	    // 55% chance regular lilypad
+	    if(randomNum < 5.5){
 	      	return 0;
 	    }
-	    // 10% pink lotus
-	    else if(randomNum < 6){
+	    // 15% pink lotus
+	    else if(randomNum < 7){
 	      	return 1;
 	    }
-	    // 10% white lotus
-	    else if(randomNum < 7){
+	    // 15% white lotus
+	    else if(randomNum < 8.5){
 	      	return 2;
 	    }
-	    // 10% water lily
+	    // 15% water lily
 	    else{
 	    	return 3;
 	    }
@@ -167,12 +165,6 @@ function Lilypad(x,y){
 
 	// display the lilypad
 	this.display = function(){
-		// ellipseMode(CENTER);
-		// ellipse(this.x, this.y, padWidth, padHeight);
-		// rectMode(CENTER);
-		// rect(this.x, this.y, this.padWidth, this.padHeight);
-
-
 		if(this.imageType == 0){
 			image(lilypadImages[0],this.x,this.y,150,149);
 	      }
@@ -208,6 +200,13 @@ function Lilypad(x,y){
 		rotate(this.rotation);
 	}
 }
+
+// // drop another petal into the pond
+// function mouseClicked(){
+// 	petalX = windowWidth/2;
+//   	petalY = 0;
+//   	petalFall();
+// }
 
 function windowResized(){
 	resizeCanvas(windowWidth, windowHeight);
