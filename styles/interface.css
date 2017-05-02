@@ -1,0 +1,71 @@
+
+@keyframes rotateIcons {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+}
+
+body{
+	background-image: url("../images/cherry-blossom-rain.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+#container{
+	width: 600px;
+	height: 100%;
+	margin: auto;
+}
+
+.content{
+	width: 600px;
+	height: 500px;
+	position: absolute;
+	top: 50%;
+	margin-top: -250px;
+	animation: rotateIcons 15s linear 0s infinite;
+}
+
+#links{
+	float: left;
+	text-align: center;
+}
+
+img{
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+#treeIcon{
+	animation: rotateIcons 15s linear 0s infinite;
+	animation-direction: reverse;
+}
+
+#rainIcon{
+	animation: rotateIcons 15s linear 0s infinite;
+	animation-direction: reverse;
+}
+
+#lotusIcon{
+	animation: rotateIcons 15s linear 0s infinite;
+	animation-direction: reverse;
+}
+
+/* hover over icons to pause animation*/
+#lotusIcon:hover{
+	animation-play-state: paused;
+}
+#rainIcon:hover{
+	animation-play-state: paused;
+}
+#treeIcon:hover{
+	animation-play-state: paused;
+}
+
+.pauseRotation {
+	animation-play-state: paused;
+}
+
+.resumeRotation{
+	animation-play-state: running;
+}
