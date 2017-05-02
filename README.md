@@ -7,4 +7,4 @@ For my final project, I want the overarching theme of my sites to be about parti
 
 Final Site
 ===============
-[Click to be redirected to site.](http://i6.cims.nyu.edu/~awc316/dotw/dotw-final-project)
+[Click here to be redirected to site.](http://i6.cims.nyu.edu/~awc316/dotw/dotw-final-project)
